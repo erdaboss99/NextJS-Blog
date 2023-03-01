@@ -1,7 +1,7 @@
 export default function Home() {
 	return (
 		<div>
-			<h1>Test heading!</h1>
+			<h1 className='text-3xl font-bold'>Test heading!</h1>
 		</div>
 	);
 }
