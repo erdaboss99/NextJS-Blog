@@ -1,3 +1,9 @@
+---
+title: 5 Classic Cars That Are Worth Investing In
+slug: 5_Classic_Cars_That_Are_Worth_Investing_In
+meta: This post provides a list of classic cars that have seen significant appreciation in value over time, making them a worthwhile investment. It emphasizes the importance of doing research and buying from reputable dealers when investing in classic cars.
+---
+
 # 5 Classic Cars That Are Worth Investing In
 
 ## This post provides a list of classic cars that have seen significant appreciation in value over time, making them a worthwhile investment. It emphasizes the importance of doing research and buying from reputable dealers when investing in classic cars.

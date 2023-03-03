@@ -1,3 +1,9 @@
+---
+title: The Evolution of Electric Cars, From Concept to Reality
+slug: The_Evolution_of_Electric_Cars_From_Concept_to_Reality
+meta: This blog post traces the history of electric cars from their inception in the 1800s to the present day, highlighting the technological advances that have made them a viable alternative to gas-powered vehicles. It also focuses on the success of Tesla and their role in revolutionizing the electric car market.
+---
+
 # The Evolution of Electric Cars: From Concept to Reality
 
 ## This blog post traces the history of electric cars from their inception in the 1800s to the present day, highlighting the technological advances that have made them a viable alternative to gas-powered vehicles. It also focuses on the success of Tesla and their role in revolutionizing the electric car market.
