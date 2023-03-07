@@ -26,36 +26,44 @@ interface IStaticProps extends ParsedUrlQuery {
 }
 
 export const getStaticProps: GetStaticProps<Post> = async (context) => {
-	const { params } = context;
-	const { postSlug } = params as IStaticProps;
+	try {
+		const { params } = context;
+		const { postSlug } = params as IStaticProps;
 
-	const filePathToRead = path.join(process.cwd(), 'posts/' + postSlug + '.md');
-	const fileContent = fs.readFileSync(filePathToRead, 'utf-8');
+		const filePathToRead = path.join(process.cwd(), 'posts/' + postSlug + '.md');
+		const fileContent = fs.readFileSync(filePathToRead, 'utf-8');
 
-	const source: any = await serialize(fileContent, { parseFrontmatter: true });
+		const source: any = await serialize(fileContent, { parseFrontmatter: true });
 
-	return {
-		props: {
-			post: {
-				content: source,
-				title: source.frontmatter.title,
+		return {
+			props: {
+				post: {
+					content: source,
+					title: source.frontmatter.title,
+				},
 			},
-		},
-	};
+		};
+	} catch (error) {
+		return {
+			notFound: true,
+		};
+	}
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
 	const dirPathToRead = path.join(process.cwd(), 'posts');
 	const dirs = fs.readdirSync(dirPathToRead);
-	const paths = dirs.map((filename) => {
-		const filePathToRead = path.join(process.cwd(), 'posts/' + filename);
-		const fileContent = fs.readFileSync(filePathToRead, 'utf-8');
-		return { params: { postSlug: matter(fileContent).data.slug } };
-	});
+	const paths = dirs
+		.map((filename) => {
+			const filePathToRead = path.join(process.cwd(), 'posts/' + filename);
+			const fileContent = fs.readFileSync(filePathToRead, 'utf-8');
+			return { params: { postSlug: matter(fileContent).data.slug } };
+		})
+		.filter((path) => typeof path === 'string');
 
 	return {
 		paths,
-		fallback: false,
+		fallback: 'blocking',
 	};
 };
 
