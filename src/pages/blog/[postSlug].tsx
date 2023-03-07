@@ -3,8 +3,9 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { ParsedUrlQuery } from 'querystring';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+import { Post } from 'utils/types';
 
 type SinglePostPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -23,13 +24,6 @@ const SinglePostPage: NextPage<SinglePostPageProps> = ({ post }) => {
 interface IStaticProps extends ParsedUrlQuery {
 	postSlug: string;
 }
-
-type Post = {
-	post: {
-		title: string;
-		content: MDXRemoteSerializeResult;
-	};
-};
 
 export const getStaticProps: GetStaticProps<Post> = async (context) => {
 	const { params } = context;
