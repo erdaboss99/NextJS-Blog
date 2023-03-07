@@ -54,12 +54,12 @@ export const getStaticPaths: GetStaticPaths = () => {
 	const dirPathToRead = path.join(process.cwd(), 'posts');
 	const dirs = fs.readdirSync(dirPathToRead);
 	const paths = dirs
+		.filter((file) => file.endsWith('.md'))
 		.map((filename) => {
 			const filePathToRead = path.join(process.cwd(), 'posts/' + filename);
 			const fileContent = fs.readFileSync(filePathToRead, 'utf-8');
 			return { params: { postSlug: matter(fileContent).data.slug } };
-		})
-		.filter((path) => typeof path === 'string');
+		});
 
 	return {
 		paths,
