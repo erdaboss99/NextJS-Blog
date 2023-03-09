@@ -33,13 +33,13 @@ export const getStaticProps: GetStaticProps<Post> = async (context) => {
 		const filePathToRead = path.join(process.cwd(), 'posts/' + postSlug + '.md');
 		const fileContent = fs.readFileSync(filePathToRead, 'utf-8');
 
-		const source: any = await serialize(fileContent, { parseFrontmatter: true });
+		const source = await serialize(fileContent, { parseFrontmatter: true });
 
 		return {
 			props: {
 				post: {
 					content: source,
-					title: source.frontmatter.title,
+					title: source.frontmatter.title as string,
 				},
 			},
 		};
